@@ -8,17 +8,20 @@ from config.settings import MODEL_PROVIDER
 
 def get_model():
     provider = MODEL_PROVIDER.lower()
+    model_id = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
 
     if provider == "groq":
         from strands.models.openai import OpenAIModel
-        return OpenAIModel(
+        from core.rate_limiter import RateLimitedModel
+        base = OpenAIModel(
             client_args={
                 "api_key": os.getenv("GROQ_API_KEY"),
                 "base_url": "https://api.groq.com/openai/v1",
             },
-            model_id=os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
+            model_id=model_id,
             params={"temperature": 0.7, "max_tokens": 2048},
         )
+        return RateLimitedModel(base, model_id)
 
     if provider == "mistral":
         from litellm import completion
