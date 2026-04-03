@@ -1,0 +1,28 @@
+# ── Core ───────────────────────────────────────────────────────────────────
+strands-agents
+python-dotenv
+loguru
+apscheduler
+pydantic
+
+# ── Model (Groq via OpenAI-compatible endpoint) ────────────────────────────
+# strands-agents already pulls openai; no extra install needed for Groq
+
+# ── Memory (lightweight swap — no heavy ML model download) ─────────────────
+chromadb
+
+# ── Platform SDKs (install only what you have credentials for) ─────────────
+# linkedin-api
+# instagrapi
+# facebook-sdk
+# python-telegram-bot
+# twilio
+
+# ── Email & Calendar ───────────────────────────────────────────────────────
+# sendgrid
+# requests is already a transitive dep
+
+# ── Data ingestion ─────────────────────────────────────────────────────────
+# PyPDF2
+# python-docx
+# beautifulsoup4
