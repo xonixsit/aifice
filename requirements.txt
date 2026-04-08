@@ -26,3 +26,8 @@ chromadb
 # PyPDF2
 # python-docx
 # beautifulsoup4
+
+# Chat interfaces
+flask
+python-telegram-bot
+twilio
